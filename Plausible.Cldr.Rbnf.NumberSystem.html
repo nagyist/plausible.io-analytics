@@ -4,21 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.30.3">
+    <meta name="generator" content="ExDoc v0.35.1">
     <meta name="project" content="Plausible v0.0.1">
 
+
     <title>Plausible.Cldr.Rbnf.NumberSystem — Plausible v0.0.1</title>
-    <link rel="stylesheet" href="dist/html-elixir-P5GXSCHE.css" />
+    <link rel="stylesheet" href="dist/html-elixir-P45HOAC7.css" />
 
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
-    <script src="dist/handlebars.templates-NBND3S2D.js"></script>
-    <script src="dist/sidebar_items-CBF5BFFF.js"></script>
-
-      <script src="docs_config.js"></script>
-
-    <script async src="dist/html-CGDDOCMI.js"></script>
-
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-04D7F711.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-PVRIOB7F.js"></script>
 
   </head>
   <body data-type="modules" class="page-module">
@@ -36,89 +34,115 @@
       } catch (error) { }
     </script>
 
-<div class="main">
+<div class="body-wrapper">
 
-<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
   <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
-<section class="sidebar">
-  <form class="sidebar-search" action="search.html">
-    <button type="submit" class="search-button" aria-label="Submit Search">
-      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
-    </button>
-    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
-    </button>
-    <label class="search-label">
-      <p class="sr-only">Search</p>
-      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-    </label>
-  </form>
-
-  <div class="autocomplete">
-    <div class="autocomplete-results">
-    </div>
-  </div>
+<nav id="sidebar" class="sidebar">
 
   <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
 
-      <a href="readme.html">
-        <img src="assets/logo.png" alt="Plausible" class="sidebar-projectImage">
-      </a>
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Plausible" />
+        </a>
 
-    <div class="sidebar-projectDetails">
-      <a href="readme.html" class="sidebar-projectName" translate="no">
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
 Plausible
-      </a>
-      <div class="sidebar-projectVersion" translate="no">
-        v0.0.1
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.0.1
+        </div>
       </div>
     </div>
-    <ul class="sidebar-listNav">
-      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
 
-        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
 
 
-        <li><a id="tasks-list-link" href="#full-list"><span translate="no">Mix</span> Tasks</a></li>
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
 
     </ul>
   </div>
 
-  <div class="gradient"></div>
-  <ul id="full-list"></ul>
-</section>
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
 
-<section class="content">
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
   <output role="status" id="toast"></output>
-  <div class="content-outer">
-    <div id="content" class="content-inner">
 
-<h1>
-<button class="icon-action display-settings">
-  <i class="ri-settings-3-line"></i>
-  <span class="sr-only">Settings</span>
-</button>
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Plausible</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Plausible.Cldr.Rbnf.NumberSystem</span> 
+    <small class="app-vsn" translate="no">(Plausible v0.0.1)</small>
+
+  </h1>
 
 
-    <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" title="View Source" class="icon-action" rel="help">
-      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-      <span class="sr-only">View Source</span>
-    </a>
-
-  <span translate="no">Plausible.Cldr.Rbnf.NumberSystem</span> 
-  <small class="app-vsn" translate="no">(Plausible v0.0.1)</small>
-
-</h1>
-
-
-  <section id="moduledoc">
+    <section id="moduledoc">
 <p>Functions to implement the number system rule-based-number-format rules of CLDR.</p><p>These rules are defined only on the &quot;und&quot; locale and represent specialised
-number formatting.</p><p>The standard public API for RBNF is via the <a href="https://hexdocs.pm/ex_cldr_numbers/2.31.3/Cldr.Number.html#to_string/2"><code class="inline">Cldr.Number.to_string/2</code></a> function.</p><p>The functions on this module are defined at compile time based upon the RBNF rules
-defined in the Unicode CLDR data repository.  Available rules are identified by:</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Plausible.Cldr.Rbnf.NumberSystem</span><span class="o">.</span><span class="n">rule_sets</span><span class="p" data-group-id="9025802434-1">(</span><span class="ss">:und</span><span class="p" data-group-id="9025802434-1">)</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="9025802434-2">(</span><span class="p" data-group-id="9025802434-2">)</span><span class="w">
-</span><span class="p" data-group-id="9025802434-3">[</span><span class="w">
+number formatting.</p><p>The standard public API for RBNF is via the <a href="https://hexdocs.pm/ex_cldr_numbers/2.33.1/Cldr.Number.html#to_string/2"><code class="inline">Cldr.Number.to_string/2</code></a> function.</p><p>The functions on this module are defined at compile time based upon the RBNF rules
+defined in the Unicode CLDR data repository.  Available rules are identified by:</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Plausible.Cldr.Rbnf.NumberSystem</span><span class="o">.</span><span class="n">rule_sets</span><span class="p" data-group-id="2017044931-1">(</span><span class="ss">:und</span><span class="p" data-group-id="2017044931-1">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">sort</span><span class="p" data-group-id="2017044931-2">(</span><span class="p" data-group-id="2017044931-2">)</span><span class="w">
+</span><span class="p" data-group-id="2017044931-3">[</span><span class="w">
   </span><span class="ss">:armenian_lower</span><span class="p">,</span><span class="w">
   </span><span class="ss">:armenian_upper</span><span class="p">,</span><span class="w">
   </span><span class="ss">:cyrillic_lower</span><span class="p">,</span><span class="w">
@@ -132,18 +156,19 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
   </span><span class="ss">:roman_upper</span><span class="p">,</span><span class="w">
   </span><span class="ss">:tamil</span><span class="p">,</span><span class="w">
   </span><span class="ss">:zz_default</span><span class="w">
-</span><span class="p" data-group-id="9025802434-3">]</span></code></pre><p>A rule can then be invoked on an available rule_set.  For example</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Plausible.Cldr.Rbnf.NumberSystem</span><span class="o">.</span><span class="n">roman_upper</span><span class="p" data-group-id="2865084297-1">(</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="ss">:und</span><span class="p" data-group-id="2865084297-1">)</span><span class="w">
-</span><span class="s">&quot;CXXIII&quot;</span></code></pre><p>This particular call is equivalent to the call through the public API of:</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Plausible.Cldr.Number</span><span class="o">.</span><span class="n">to_string</span><span class="p" data-group-id="5547304451-1">(</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="ss">format</span><span class="p">:</span><span class="w"> </span><span class="ss">:roman</span><span class="p" data-group-id="5547304451-1">)</span><span class="w">
-</span><span class="p" data-group-id="5547304451-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CXXIII&quot;</span><span class="p" data-group-id="5547304451-2">}</span></code></pre>
-  </section>
+</span><span class="p" data-group-id="2017044931-3">]</span></code></pre><p>A rule can then be invoked on an available rule_set.  For example</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Plausible.Cldr.Rbnf.NumberSystem</span><span class="o">.</span><span class="n">roman_upper</span><span class="p" data-group-id="5875449962-1">(</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="ss">:und</span><span class="p" data-group-id="5875449962-1">)</span><span class="w">
+</span><span class="s">&quot;CXXIII&quot;</span></code></pre><p>This particular call is equivalent to the call through the public API of:</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Plausible.Cldr.Number</span><span class="o">.</span><span class="n">to_string</span><span class="p" data-group-id="3396753707-1">(</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="ss">format</span><span class="p">:</span><span class="w"> </span><span class="ss">:roman</span><span class="p" data-group-id="3396753707-1">)</span><span class="w">
+</span><span class="p" data-group-id="3396753707-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CXXIII&quot;</span><span class="p" data-group-id="3396753707-2">}</span></code></pre>
+    </section>
 
+</div>
 
   <section id="summary" class="details-list">
     <h1 class="section-heading">
       <a class="hover-link" href="#summary">
         <i class="ri-link-m" aria-hidden="true"></i>
-        Summary
       </a>
+      <span class="text">Summary</span>
     </h1>
 <div class="summary-functions summary">
   <h2>
@@ -152,7 +177,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#all_rule_sets/0" translate="no">all_rule_sets()</a>
+        <a href="#all_rule_sets/0" data-no-tooltip translate="no">all_rule_sets()</a>
 
       </div>
 
@@ -160,7 +185,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#armenian_lower/1" translate="no">armenian_lower(number)</a>
+        <a href="#armenian_lower/1" data-no-tooltip translate="no">armenian_lower(number)</a>
 
       </div>
 
@@ -168,7 +193,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#armenian_lower/2" translate="no">armenian_lower(number, locale)</a>
+        <a href="#armenian_lower/2" data-no-tooltip translate="no">armenian_lower(number, locale)</a>
 
       </div>
 
@@ -176,7 +201,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#armenian_upper/1" translate="no">armenian_upper(number)</a>
+        <a href="#armenian_upper/1" data-no-tooltip translate="no">armenian_upper(number)</a>
 
       </div>
 
@@ -184,7 +209,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#armenian_upper/2" translate="no">armenian_upper(number, locale)</a>
+        <a href="#armenian_upper/2" data-no-tooltip translate="no">armenian_upper(number, locale)</a>
 
       </div>
 
@@ -192,7 +217,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#cyrillic_lower/1" translate="no">cyrillic_lower(number)</a>
+        <a href="#cyrillic_lower/1" data-no-tooltip translate="no">cyrillic_lower(number)</a>
 
       </div>
 
@@ -200,7 +225,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#cyrillic_lower/2" translate="no">cyrillic_lower(number, locale)</a>
+        <a href="#cyrillic_lower/2" data-no-tooltip translate="no">cyrillic_lower(number, locale)</a>
 
       </div>
 
@@ -208,7 +233,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#cyrillic_lower_1_10/2" translate="no">cyrillic_lower_1_10(number, language_tag)</a>
+        <a href="#cyrillic_lower_1_10/2" data-no-tooltip translate="no">cyrillic_lower_1_10(number, language_tag)</a>
 
       </div>
 
@@ -216,7 +241,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#cyrillic_lower_final/2" translate="no">cyrillic_lower_final(number, language_tag)</a>
+        <a href="#cyrillic_lower_final/2" data-no-tooltip translate="no">cyrillic_lower_final(number, language_tag)</a>
 
       </div>
 
@@ -224,7 +249,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#cyrillic_lower_post/2" translate="no">cyrillic_lower_post(number, language_tag)</a>
+        <a href="#cyrillic_lower_post/2" data-no-tooltip translate="no">cyrillic_lower_post(number, language_tag)</a>
 
       </div>
 
@@ -232,7 +257,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#cyrillic_lower_thousands/2" translate="no">cyrillic_lower_thousands(number, language_tag)</a>
+        <a href="#cyrillic_lower_thousands/2" data-no-tooltip translate="no">cyrillic_lower_thousands(number, language_tag)</a>
 
       </div>
 
@@ -240,7 +265,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#ethiopic/1" translate="no">ethiopic(number)</a>
+        <a href="#ethiopic/1" data-no-tooltip translate="no">ethiopic(number)</a>
 
       </div>
 
@@ -248,7 +273,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#ethiopic/2" translate="no">ethiopic(number, locale)</a>
+        <a href="#ethiopic/2" data-no-tooltip translate="no">ethiopic(number, locale)</a>
 
       </div>
 
@@ -256,7 +281,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#ethiopic_p1/2" translate="no">ethiopic_p1(number, language_tag)</a>
+        <a href="#ethiopic_p1/2" data-no-tooltip translate="no">ethiopic_p1(number, language_tag)</a>
 
       </div>
 
@@ -264,7 +289,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#ethiopic_p2/2" translate="no">ethiopic_p2(number, language_tag)</a>
+        <a href="#ethiopic_p2/2" data-no-tooltip translate="no">ethiopic_p2(number, language_tag)</a>
 
       </div>
 
@@ -272,7 +297,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#ethiopic_p3/2" translate="no">ethiopic_p3(number, language_tag)</a>
+        <a href="#ethiopic_p3/2" data-no-tooltip translate="no">ethiopic_p3(number, language_tag)</a>
 
       </div>
 
@@ -280,7 +305,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#ethiopic_p/2" translate="no">ethiopic_p(number, language_tag)</a>
+        <a href="#ethiopic_p/2" data-no-tooltip translate="no">ethiopic_p(number, language_tag)</a>
 
       </div>
 
@@ -288,7 +313,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#georgian/1" translate="no">georgian(number)</a>
+        <a href="#georgian/1" data-no-tooltip translate="no">georgian(number)</a>
 
       </div>
 
@@ -296,7 +321,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#georgian/2" translate="no">georgian(number, locale)</a>
+        <a href="#georgian/2" data-no-tooltip translate="no">georgian(number, locale)</a>
 
       </div>
 
@@ -304,7 +329,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#greek_lower/1" translate="no">greek_lower(number)</a>
+        <a href="#greek_lower/1" data-no-tooltip translate="no">greek_lower(number)</a>
 
       </div>
 
@@ -312,7 +337,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#greek_lower/2" translate="no">greek_lower(number, locale)</a>
+        <a href="#greek_lower/2" data-no-tooltip translate="no">greek_lower(number, locale)</a>
 
       </div>
 
@@ -320,7 +345,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#greek_numeral_majuscules/2" translate="no">greek_numeral_majuscules(number, language_tag)</a>
+        <a href="#greek_numeral_majuscules/2" data-no-tooltip translate="no">greek_numeral_majuscules(number, language_tag)</a>
 
       </div>
 
@@ -328,7 +353,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#greek_numeral_minuscules/2" translate="no">greek_numeral_minuscules(number, language_tag)</a>
+        <a href="#greek_numeral_minuscules/2" data-no-tooltip translate="no">greek_numeral_minuscules(number, language_tag)</a>
 
       </div>
 
@@ -336,7 +361,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#greek_upper/1" translate="no">greek_upper(number)</a>
+        <a href="#greek_upper/1" data-no-tooltip translate="no">greek_upper(number)</a>
 
       </div>
 
@@ -344,7 +369,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#greek_upper/2" translate="no">greek_upper(number, locale)</a>
+        <a href="#greek_upper/2" data-no-tooltip translate="no">greek_upper(number, locale)</a>
 
       </div>
 
@@ -352,7 +377,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#hebrew/1" translate="no">hebrew(number)</a>
+        <a href="#hebrew/1" data-no-tooltip translate="no">hebrew(number)</a>
 
       </div>
 
@@ -360,7 +385,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#hebrew/2" translate="no">hebrew(number, locale)</a>
+        <a href="#hebrew/2" data-no-tooltip translate="no">hebrew(number, locale)</a>
 
       </div>
 
@@ -368,7 +393,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#hebrew_0_99/2" translate="no">hebrew_0_99(number, language_tag)</a>
+        <a href="#hebrew_0_99/2" data-no-tooltip translate="no">hebrew_0_99(number, language_tag)</a>
 
       </div>
 
@@ -376,7 +401,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#hebrew_item/1" translate="no">hebrew_item(number)</a>
+        <a href="#hebrew_item/1" data-no-tooltip translate="no">hebrew_item(number)</a>
 
       </div>
 
@@ -384,7 +409,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#hebrew_item/2" translate="no">hebrew_item(number, locale)</a>
+        <a href="#hebrew_item/2" data-no-tooltip translate="no">hebrew_item(number, locale)</a>
 
       </div>
 
@@ -392,7 +417,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#hebrew_item_hundreds/2" translate="no">hebrew_item_hundreds(number, language_tag)</a>
+        <a href="#hebrew_item_hundreds/2" data-no-tooltip translate="no">hebrew_item_hundreds(number, language_tag)</a>
 
       </div>
 
@@ -400,7 +425,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#hebrew_thousands/2" translate="no">hebrew_thousands(number, language_tag)</a>
+        <a href="#hebrew_thousands/2" data-no-tooltip translate="no">hebrew_thousands(number, language_tag)</a>
 
       </div>
 
@@ -408,7 +433,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#roman_lower/1" translate="no">roman_lower(number)</a>
+        <a href="#roman_lower/1" data-no-tooltip translate="no">roman_lower(number)</a>
 
       </div>
 
@@ -416,7 +441,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#roman_lower/2" translate="no">roman_lower(number, locale)</a>
+        <a href="#roman_lower/2" data-no-tooltip translate="no">roman_lower(number, locale)</a>
 
       </div>
 
@@ -424,7 +449,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#roman_upper/1" translate="no">roman_upper(number)</a>
+        <a href="#roman_upper/1" data-no-tooltip translate="no">roman_upper(number)</a>
 
       </div>
 
@@ -432,7 +457,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#roman_upper/2" translate="no">roman_upper(number, locale)</a>
+        <a href="#roman_upper/2" data-no-tooltip translate="no">roman_upper(number, locale)</a>
 
       </div>
 
@@ -440,7 +465,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#rule_sets/0" translate="no">rule_sets()</a>
+        <a href="#rule_sets/0" data-no-tooltip translate="no">rule_sets()</a>
 
       </div>
 
@@ -448,7 +473,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#rule_sets/1" translate="no">rule_sets(rbnf_locale_name)</a>
+        <a href="#rule_sets/1" data-no-tooltip translate="no">rule_sets(rbnf_locale_name)</a>
 
       </div>
 
@@ -456,7 +481,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#tamil/1" translate="no">tamil(number)</a>
+        <a href="#tamil/1" data-no-tooltip translate="no">tamil(number)</a>
 
       </div>
 
@@ -464,7 +489,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#tamil/2" translate="no">tamil(number, locale)</a>
+        <a href="#tamil/2" data-no-tooltip translate="no">tamil(number, locale)</a>
 
       </div>
 
@@ -472,7 +497,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#tamil_thousands/2" translate="no">tamil_thousands(number, language_tag)</a>
+        <a href="#tamil_thousands/2" data-no-tooltip translate="no">tamil_thousands(number, language_tag)</a>
 
       </div>
 
@@ -480,7 +505,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#zz_default/1" translate="no">zz_default(number)</a>
+        <a href="#zz_default/1" data-no-tooltip translate="no">zz_default(number)</a>
 
       </div>
 
@@ -488,7 +513,7 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#zz_default/2" translate="no">zz_default(number, locale)</a>
+        <a href="#zz_default/2" data-no-tooltip translate="no">zz_default(number, locale)</a>
 
       </div>
 
@@ -503,22 +528,20 @@ defined in the Unicode CLDR data repository.  Available rules are identified by:
     <h1 class="section-heading">
       <a class="hover-link" href="#functions">
         <i class="ri-link-m" aria-hidden="true"></i>
-Functions
       </a>
+      <span class="text">Functions</span>
     </h1>
     <div class="functions-list">
 <section class="detail" id="all_rule_sets/0">
 
   <div class="detail-header">
-    <a href="#all_rule_sets/0" class="detail-link" title="Link to this function">
+    <a href="#all_rule_sets/0" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">all_rule_sets()</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -532,15 +555,13 @@ Functions
 <section class="detail" id="armenian_lower/1">
 
   <div class="detail-header">
-    <a href="#armenian_lower/1" class="detail-link" title="Link to this function">
+    <a href="#armenian_lower/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">armenian_lower(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -554,15 +575,13 @@ Functions
 <section class="detail" id="armenian_lower/2">
 
   <div class="detail-header">
-    <a href="#armenian_lower/2" class="detail-link" title="Link to this function">
+    <a href="#armenian_lower/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">armenian_lower(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -576,15 +595,13 @@ Functions
 <section class="detail" id="armenian_upper/1">
 
   <div class="detail-header">
-    <a href="#armenian_upper/1" class="detail-link" title="Link to this function">
+    <a href="#armenian_upper/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">armenian_upper(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -598,15 +615,13 @@ Functions
 <section class="detail" id="armenian_upper/2">
 
   <div class="detail-header">
-    <a href="#armenian_upper/2" class="detail-link" title="Link to this function">
+    <a href="#armenian_upper/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">armenian_upper(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -620,15 +635,13 @@ Functions
 <section class="detail" id="cyrillic_lower/1">
 
   <div class="detail-header">
-    <a href="#cyrillic_lower/1" class="detail-link" title="Link to this function">
+    <a href="#cyrillic_lower/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">cyrillic_lower(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -642,15 +655,13 @@ Functions
 <section class="detail" id="cyrillic_lower/2">
 
   <div class="detail-header">
-    <a href="#cyrillic_lower/2" class="detail-link" title="Link to this function">
+    <a href="#cyrillic_lower/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">cyrillic_lower(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -664,15 +675,13 @@ Functions
 <section class="detail" id="cyrillic_lower_1_10/2">
 
   <div class="detail-header">
-    <a href="#cyrillic_lower_1_10/2" class="detail-link" title="Link to this function">
+    <a href="#cyrillic_lower_1_10/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">cyrillic_lower_1_10(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -686,15 +695,13 @@ Functions
 <section class="detail" id="cyrillic_lower_final/2">
 
   <div class="detail-header">
-    <a href="#cyrillic_lower_final/2" class="detail-link" title="Link to this function">
+    <a href="#cyrillic_lower_final/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">cyrillic_lower_final(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -708,15 +715,13 @@ Functions
 <section class="detail" id="cyrillic_lower_post/2">
 
   <div class="detail-header">
-    <a href="#cyrillic_lower_post/2" class="detail-link" title="Link to this function">
+    <a href="#cyrillic_lower_post/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">cyrillic_lower_post(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -730,15 +735,13 @@ Functions
 <section class="detail" id="cyrillic_lower_thousands/2">
 
   <div class="detail-header">
-    <a href="#cyrillic_lower_thousands/2" class="detail-link" title="Link to this function">
+    <a href="#cyrillic_lower_thousands/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">cyrillic_lower_thousands(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -752,15 +755,13 @@ Functions
 <section class="detail" id="ethiopic/1">
 
   <div class="detail-header">
-    <a href="#ethiopic/1" class="detail-link" title="Link to this function">
+    <a href="#ethiopic/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">ethiopic(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -774,15 +775,13 @@ Functions
 <section class="detail" id="ethiopic/2">
 
   <div class="detail-header">
-    <a href="#ethiopic/2" class="detail-link" title="Link to this function">
+    <a href="#ethiopic/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">ethiopic(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -796,15 +795,13 @@ Functions
 <section class="detail" id="ethiopic_p1/2">
 
   <div class="detail-header">
-    <a href="#ethiopic_p1/2" class="detail-link" title="Link to this function">
+    <a href="#ethiopic_p1/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">ethiopic_p1(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -818,15 +815,13 @@ Functions
 <section class="detail" id="ethiopic_p2/2">
 
   <div class="detail-header">
-    <a href="#ethiopic_p2/2" class="detail-link" title="Link to this function">
+    <a href="#ethiopic_p2/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">ethiopic_p2(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -840,15 +835,13 @@ Functions
 <section class="detail" id="ethiopic_p3/2">
 
   <div class="detail-header">
-    <a href="#ethiopic_p3/2" class="detail-link" title="Link to this function">
+    <a href="#ethiopic_p3/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">ethiopic_p3(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -862,15 +855,13 @@ Functions
 <section class="detail" id="ethiopic_p/2">
 
   <div class="detail-header">
-    <a href="#ethiopic_p/2" class="detail-link" title="Link to this function">
+    <a href="#ethiopic_p/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">ethiopic_p(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -884,15 +875,13 @@ Functions
 <section class="detail" id="georgian/1">
 
   <div class="detail-header">
-    <a href="#georgian/1" class="detail-link" title="Link to this function">
+    <a href="#georgian/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">georgian(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -906,15 +895,13 @@ Functions
 <section class="detail" id="georgian/2">
 
   <div class="detail-header">
-    <a href="#georgian/2" class="detail-link" title="Link to this function">
+    <a href="#georgian/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">georgian(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -928,15 +915,13 @@ Functions
 <section class="detail" id="greek_lower/1">
 
   <div class="detail-header">
-    <a href="#greek_lower/1" class="detail-link" title="Link to this function">
+    <a href="#greek_lower/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">greek_lower(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -950,15 +935,13 @@ Functions
 <section class="detail" id="greek_lower/2">
 
   <div class="detail-header">
-    <a href="#greek_lower/2" class="detail-link" title="Link to this function">
+    <a href="#greek_lower/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">greek_lower(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -972,15 +955,13 @@ Functions
 <section class="detail" id="greek_numeral_majuscules/2">
 
   <div class="detail-header">
-    <a href="#greek_numeral_majuscules/2" class="detail-link" title="Link to this function">
+    <a href="#greek_numeral_majuscules/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">greek_numeral_majuscules(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -994,15 +975,13 @@ Functions
 <section class="detail" id="greek_numeral_minuscules/2">
 
   <div class="detail-header">
-    <a href="#greek_numeral_minuscules/2" class="detail-link" title="Link to this function">
+    <a href="#greek_numeral_minuscules/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">greek_numeral_minuscules(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1016,15 +995,13 @@ Functions
 <section class="detail" id="greek_upper/1">
 
   <div class="detail-header">
-    <a href="#greek_upper/1" class="detail-link" title="Link to this function">
+    <a href="#greek_upper/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">greek_upper(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1038,15 +1015,13 @@ Functions
 <section class="detail" id="greek_upper/2">
 
   <div class="detail-header">
-    <a href="#greek_upper/2" class="detail-link" title="Link to this function">
+    <a href="#greek_upper/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">greek_upper(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1060,15 +1035,13 @@ Functions
 <section class="detail" id="hebrew/1">
 
   <div class="detail-header">
-    <a href="#hebrew/1" class="detail-link" title="Link to this function">
+    <a href="#hebrew/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">hebrew(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1082,15 +1055,13 @@ Functions
 <section class="detail" id="hebrew/2">
 
   <div class="detail-header">
-    <a href="#hebrew/2" class="detail-link" title="Link to this function">
+    <a href="#hebrew/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">hebrew(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1104,15 +1075,13 @@ Functions
 <section class="detail" id="hebrew_0_99/2">
 
   <div class="detail-header">
-    <a href="#hebrew_0_99/2" class="detail-link" title="Link to this function">
+    <a href="#hebrew_0_99/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">hebrew_0_99(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1126,15 +1095,13 @@ Functions
 <section class="detail" id="hebrew_item/1">
 
   <div class="detail-header">
-    <a href="#hebrew_item/1" class="detail-link" title="Link to this function">
+    <a href="#hebrew_item/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">hebrew_item(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1148,15 +1115,13 @@ Functions
 <section class="detail" id="hebrew_item/2">
 
   <div class="detail-header">
-    <a href="#hebrew_item/2" class="detail-link" title="Link to this function">
+    <a href="#hebrew_item/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">hebrew_item(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1170,15 +1135,13 @@ Functions
 <section class="detail" id="hebrew_item_hundreds/2">
 
   <div class="detail-header">
-    <a href="#hebrew_item_hundreds/2" class="detail-link" title="Link to this function">
+    <a href="#hebrew_item_hundreds/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">hebrew_item_hundreds(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1192,15 +1155,13 @@ Functions
 <section class="detail" id="hebrew_thousands/2">
 
   <div class="detail-header">
-    <a href="#hebrew_thousands/2" class="detail-link" title="Link to this function">
+    <a href="#hebrew_thousands/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">hebrew_thousands(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1214,15 +1175,13 @@ Functions
 <section class="detail" id="roman_lower/1">
 
   <div class="detail-header">
-    <a href="#roman_lower/1" class="detail-link" title="Link to this function">
+    <a href="#roman_lower/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">roman_lower(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1236,15 +1195,13 @@ Functions
 <section class="detail" id="roman_lower/2">
 
   <div class="detail-header">
-    <a href="#roman_lower/2" class="detail-link" title="Link to this function">
+    <a href="#roman_lower/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">roman_lower(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1258,15 +1215,13 @@ Functions
 <section class="detail" id="roman_upper/1">
 
   <div class="detail-header">
-    <a href="#roman_upper/1" class="detail-link" title="Link to this function">
+    <a href="#roman_upper/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">roman_upper(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1280,15 +1235,13 @@ Functions
 <section class="detail" id="roman_upper/2">
 
   <div class="detail-header">
-    <a href="#roman_upper/2" class="detail-link" title="Link to this function">
+    <a href="#roman_upper/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">roman_upper(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1302,15 +1255,13 @@ Functions
 <section class="detail" id="rule_sets/0">
 
   <div class="detail-header">
-    <a href="#rule_sets/0" class="detail-link" title="Link to this function">
+    <a href="#rule_sets/0" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">rule_sets()</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1324,15 +1275,13 @@ Functions
 <section class="detail" id="rule_sets/1">
 
   <div class="detail-header">
-    <a href="#rule_sets/1" class="detail-link" title="Link to this function">
+    <a href="#rule_sets/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">rule_sets(rbnf_locale_name)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1346,15 +1295,13 @@ Functions
 <section class="detail" id="tamil/1">
 
   <div class="detail-header">
-    <a href="#tamil/1" class="detail-link" title="Link to this function">
+    <a href="#tamil/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">tamil(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1368,15 +1315,13 @@ Functions
 <section class="detail" id="tamil/2">
 
   <div class="detail-header">
-    <a href="#tamil/2" class="detail-link" title="Link to this function">
+    <a href="#tamil/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">tamil(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1390,15 +1335,13 @@ Functions
 <section class="detail" id="tamil_thousands/2">
 
   <div class="detail-header">
-    <a href="#tamil_thousands/2" class="detail-link" title="Link to this function">
+    <a href="#tamil_thousands/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">tamil_thousands(number, language_tag)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1412,15 +1355,13 @@ Functions
 <section class="detail" id="zz_default/1">
 
   <div class="detail-header">
-    <a href="#zz_default/1" class="detail-link" title="Link to this function">
+    <a href="#zz_default/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">zz_default(number)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1434,15 +1375,13 @@ Functions
 <section class="detail" id="zz_default/2">
 
   <div class="detail-header">
-    <a href="#zz_default/2" class="detail-link" title="Link to this function">
+    <a href="#zz_default/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">zz_default(number, locale)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/cldr.ex#L1" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -1457,34 +1396,33 @@ Functions
     </div>
   </section>
 
-      <footer class="footer">
-        <p>
+    <footer class="footer">
+      <p>
 
-          <span class="line">
-            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
-              Search HexDocs
-            </button>
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
 
-              <a href="Plausible.epub" title="ePub version">
-                Download ePub version
-              </a>
+            <a href="Plausible.epub" title="ePub version">
+              Download ePub version
+            </a>
 
-          </span>
-        </p>
+        </span>
+      </p>
 
-        <p class="built-using">
-          Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.30.3) for the
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.35.1) for the
 
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
 
-        </p>
-      </footer>
-    </div>
+      </p>
+
+    </footer>
   </div>
-</section>
+</main>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad: true})</script>
 

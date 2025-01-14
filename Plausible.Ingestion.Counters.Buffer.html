@@ -4,21 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.30.3">
+    <meta name="generator" content="ExDoc v0.35.1">
     <meta name="project" content="Plausible v0.0.1">
 
+
     <title>Plausible.Ingestion.Counters.Buffer — Plausible v0.0.1</title>
-    <link rel="stylesheet" href="dist/html-elixir-P5GXSCHE.css" />
+    <link rel="stylesheet" href="dist/html-elixir-P45HOAC7.css" />
 
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
-    <script src="dist/handlebars.templates-NBND3S2D.js"></script>
-    <script src="dist/sidebar_items-CBF5BFFF.js"></script>
-
-      <script src="docs_config.js"></script>
-
-    <script async src="dist/html-CGDDOCMI.js"></script>
-
+    <script src="dist/handlebars.templates-K7URE6B4.js"></script>
+    <script src="dist/sidebar_items-04D7F711.js"></script>
+    <script src="docs_config.js"></script>
+    <script async src="dist/html-PVRIOB7F.js"></script>
 
   </head>
   <body data-type="modules" class="page-module">
@@ -36,99 +34,126 @@
       } catch (error) { }
     </script>
 
-<div class="main">
+<div class="body-wrapper">
 
-<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
   <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
-<section class="sidebar">
-  <form class="sidebar-search" action="search.html">
-    <button type="submit" class="search-button" aria-label="Submit Search">
-      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
-    </button>
-    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
-    </button>
-    <label class="search-label">
-      <p class="sr-only">Search</p>
-      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-    </label>
-  </form>
-
-  <div class="autocomplete">
-    <div class="autocomplete-results">
-    </div>
-  </div>
+<nav id="sidebar" class="sidebar">
 
   <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
 
-      <a href="readme.html">
-        <img src="assets/logo.png" alt="Plausible" class="sidebar-projectImage">
-      </a>
+        <a href="readme.html" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Plausible" />
+        </a>
 
-    <div class="sidebar-projectDetails">
-      <a href="readme.html" class="sidebar-projectName" translate="no">
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
 Plausible
-      </a>
-      <div class="sidebar-projectVersion" translate="no">
-        v0.0.1
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.0.1
+        </div>
       </div>
     </div>
-    <ul class="sidebar-listNav">
-      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+    <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
+      <li>
+        <button id="extras-list-tab-button" role="tab" data-type="extras" aria-controls="extras-tab-panel" aria-selected="true" tabindex="0">
+Pages
+        </button>
+      </li>
 
-        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+        <li>
+          <button id="modules-list-tab-button" role="tab" data-type="modules" aria-controls="modules-tab-panel" aria-selected="false" tabindex="-1">
+            Modules
+          </button>
+        </li>
 
 
-        <li><a id="tasks-list-link" href="#full-list"><span translate="no">Mix</span> Tasks</a></li>
+        <li>
+          <button id="tasks-list-tab-button" role="tab" data-type="tasks" aria-controls="tasks-tab-panel" aria-selected="false" tabindex="-1">
+            <span translate="no">Mix</span> Tasks
+          </button>
+        </li>
 
     </ul>
   </div>
 
-  <div class="gradient"></div>
-  <ul id="full-list"></ul>
-</section>
+  <div id="extras-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="extras-list-tab-button">
+    <ul id="extras-full-list" class="full-list"></ul>
+  </div>
 
-<section class="content">
+    <div id="modules-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="modules-list-tab-button" hidden>
+      <ul id="modules-full-list" class="full-list"></ul>
+    </div>
+
+
+    <div id="tasks-tab-panel" class="sidebar-tabpanel" role="tabpanel" aria-labelledby="tasks-list-tab-button" hidden>
+      <ul id="tasks-full-list" class="full-list"></ul>
+    </div>
+
+</nav>
+
+<main class="content">
   <output role="status" id="toast"></output>
-  <div class="content-outer">
-    <div id="content" class="content-inner">
 
-<h1>
-<button class="icon-action display-settings">
-  <i class="ri-settings-3-line"></i>
-  <span class="sr-only">Settings</span>
-</button>
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Plausible</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true" title="Submit search"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <h1>
+
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+    <span translate="no">Plausible.Ingestion.Counters.Buffer</span> 
+    <small class="app-vsn" translate="no">(Plausible v0.0.1)</small>
+
+  </h1>
 
 
-    <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L1" title="View Source" class="icon-action" rel="help">
-      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-      <span class="sr-only">View Source</span>
-    </a>
-
-  <span translate="no">Plausible.Ingestion.Counters.Buffer</span> 
-  <small class="app-vsn" translate="no">(Plausible v0.0.1)</small>
-
-</h1>
-
-
-  <section id="moduledoc">
+    <section id="moduledoc">
 <p>A buffer aggregating counters for internal metrics, within 10 seconds time buckets.</p><p>See <a href="Plausible.Ingestion.Counters.html"><code class="inline">Plausible.Ingestion.Counters</code></a> for integration.</p><p>Flushing is by default possible only once the 10s bucket is complete
 (its window has moved). This is to avoid race conditions 
 when clearing up the buffer on dequeue - because there is no atomic &quot;get and delete&quot;,
 and items are buffered concurrently, there is a gap between get and delete
 in which items written may disappear otherwise.</p><p><code class="inline">aggregate_bucket_fn</code> and <code class="inline">flush_boundary_fn</code> control that semantics and
 are configurable only for test purposes.</p>
-  </section>
+    </section>
 
+</div>
 
   <section id="summary" class="details-list">
     <h1 class="section-heading">
       <a class="hover-link" href="#summary">
         <i class="ri-link-m" aria-hidden="true"></i>
-        Summary
       </a>
+      <span class="text">Summary</span>
     </h1>
 <div class="summary-types summary">
   <h2>
@@ -137,7 +162,7 @@ are configurable only for test purposes.</p>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#t:bucket_fn_opt/0" translate="no">bucket_fn_opt()</a>
+        <a href="#t:bucket_fn_opt/0" data-no-tooltip translate="no">bucket_fn_opt()</a>
 
       </div>
 
@@ -145,7 +170,7 @@ are configurable only for test purposes.</p>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#t:t/0" translate="no">t()</a>
+        <a href="#t:t/0" data-no-tooltip translate="no">t()</a>
 
       </div>
 
@@ -153,7 +178,7 @@ are configurable only for test purposes.</p>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#t:unix_timestamp/0" translate="no">unix_timestamp()</a>
+        <a href="#t:unix_timestamp/0" data-no-tooltip translate="no">unix_timestamp()</a>
 
       </div>
 
@@ -167,7 +192,7 @@ are configurable only for test purposes.</p>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#aggregate/4" translate="no">aggregate(buffer, metric, domain, timestamp)</a>
+        <a href="#aggregate/4" data-no-tooltip translate="no">aggregate(buffer, metric, domain, timestamp)</a>
 
       </div>
 
@@ -175,7 +200,7 @@ are configurable only for test purposes.</p>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#bucket_10s/1" translate="no">bucket_10s(datetime)</a>
+        <a href="#bucket_10s/1" data-no-tooltip translate="no">bucket_10s(datetime)</a>
 
       </div>
 
@@ -183,7 +208,7 @@ are configurable only for test purposes.</p>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#flush/2" translate="no">flush(buffer, now \\ DateTime.utc_now())</a>
+        <a href="#flush/2" data-no-tooltip translate="no">flush(buffer, now \\ DateTime.utc_now())</a>
 
       </div>
 
@@ -191,7 +216,7 @@ are configurable only for test purposes.</p>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#new/2" translate="no">new(buffer_name, opts \\ [])</a>
+        <a href="#new/2" data-no-tooltip translate="no">new(buffer_name, opts \\ [])</a>
 
       </div>
 
@@ -199,7 +224,7 @@ are configurable only for test purposes.</p>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#previous_10s/1" translate="no">previous_10s(datetime)</a>
+        <a href="#previous_10s/1" data-no-tooltip translate="no">previous_10s(datetime)</a>
 
       </div>
 
@@ -214,22 +239,20 @@ are configurable only for test purposes.</p>
     <h1 class="section-heading">
       <a class="hover-link" href="#types">
         <i class="ri-link-m" aria-hidden="true"></i>
-Types
       </a>
+      <span class="text">Types</span>
     </h1>
     <div class="types-list">
 <section class="detail" id="t:bucket_fn_opt/0">
 
   <div class="detail-header">
-    <a href="#t:bucket_fn_opt/0" class="detail-link" title="Link to this type">
+    <a href="#t:bucket_fn_opt/0" class="detail-link" data-no-tooltip aria-label="Link to this type">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature" translate="no">bucket_fn_opt()</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L23" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L23" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -251,15 +274,13 @@ Types
 <section class="detail" id="t:t/0">
 
   <div class="detail-header">
-    <a href="#t:t/0" class="detail-link" title="Link to this type">
+    <a href="#t:t/0" class="detail-link" data-no-tooltip aria-label="Link to this type">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature" translate="no">t()</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L21" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L21" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -283,15 +304,13 @@ Types
 <section class="detail" id="t:unix_timestamp/0">
 
   <div class="detail-header">
-    <a href="#t:unix_timestamp/0" class="detail-link" title="Link to this type">
+    <a href="#t:unix_timestamp/0" class="detail-link" data-no-tooltip aria-label="Link to this type">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature" translate="no">unix_timestamp()</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L22" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L22" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -316,22 +335,20 @@ Types
     <h1 class="section-heading">
       <a class="hover-link" href="#functions">
         <i class="ri-link-m" aria-hidden="true"></i>
-Functions
       </a>
+      <span class="text">Functions</span>
     </h1>
     <div class="functions-list">
 <section class="detail" id="aggregate/4">
 
   <div class="detail-header">
-    <a href="#aggregate/4" class="detail-link" title="Link to this function">
+    <a href="#aggregate/4" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">aggregate(buffer, metric, domain, timestamp)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L49" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L49" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -351,15 +368,13 @@ Functions
 <section class="detail" id="bucket_10s/1">
 
   <div class="detail-header">
-    <a href="#bucket_10s/1" class="detail-link" title="Link to this function">
+    <a href="#bucket_10s/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">bucket_10s(datetime)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L92" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L93" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -381,15 +396,13 @@ Functions
     <span id="flush/1"></span>
 
   <div class="detail-header">
-    <a href="#flush/2" class="detail-link" title="Link to this function">
+    <a href="#flush/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">flush(buffer, now \\ DateTime.utc_now())</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L68" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L69" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -411,15 +424,13 @@ Functions
     <span id="new/1"></span>
 
   <div class="detail-header">
-    <a href="#new/2" class="detail-link" title="Link to this function">
+    <a href="#new/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">new(buffer_name, opts \\ [])</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L35" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L35" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -439,15 +450,13 @@ Functions
 <section class="detail" id="previous_10s/1">
 
   <div class="detail-header">
-    <a href="#previous_10s/1" class="detail-link" title="Link to this function">
+    <a href="#previous_10s/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">previous_10s(datetime)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L101" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/counters/buffer.ex#L102" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
      </a>
 
 
@@ -468,34 +477,33 @@ Functions
     </div>
   </section>
 
-      <footer class="footer">
-        <p>
+    <footer class="footer">
+      <p>
 
-          <span class="line">
-            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
-              Search HexDocs
-            </button>
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
 
-              <a href="Plausible.epub" title="ePub version">
-                Download ePub version
-              </a>
+            <a href="Plausible.epub" title="ePub version">
+              Download ePub version
+            </a>
 
-          </span>
-        </p>
+        </span>
+      </p>
 
-        <p class="built-using">
-          Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.30.3) for the
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.35.1) for the
 
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
 
-        </p>
-      </footer>
-    </div>
+      </p>
+
+    </footer>
   </div>
-</section>
+</main>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad: true})</script>
 
