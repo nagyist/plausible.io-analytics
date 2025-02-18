@@ -52,11 +52,15 @@ defmodule PlausibleWeb.StatsController do
 
   def stats(%{assigns: %{site: site}} = conn, _params) do
     site = Plausible.Repo.preload(site, :owner)
+    current_user = conn.assigns[:current_user]
     stats_start_date = Plausible.Sites.stats_start_date(site)
     can_see_stats? = not Sites.locked?(site) or conn.assigns[:site_role] == :super_admin
     demo = site.domain == PlausibleWeb.Endpoint.host()
     dogfood_page_path = if demo, do: "/#{site.domain}", else: "/:dashboard"
     skip_to_dashboard? = conn.params["skip_to_dashboard"] == "true"
+
+    scroll_depth_visible? =
+      Plausible.Stats.ScrollDepth.check_feature_visible!(site, current_user)
 
     cond do
       (stats_start_date && can_see_stats?) || (can_see_stats? && skip_to_dashboard?) ->
@@ -68,11 +72,12 @@ defmodule PlausibleWeb.StatsController do
           revenue_goals: list_revenue_goals(site),
           funnels: list_funnels(site),
           has_props: Plausible.Props.configured?(site),
+          scroll_depth_visible: scroll_depth_visible?,
           stats_start_date: stats_start_date,
           native_stats_start_date: NaiveDateTime.to_date(site.native_stats_start_at),
           title: title(conn, site),
           demo: demo,
-          flags: get_flags(conn.assigns[:current_user], site),
+          flags: get_flags(current_user, site),
           is_dbip: is_dbip(),
           dogfood_page_path: dogfood_page_path,
           load_dashboard_js: true
@@ -121,6 +126,7 @@ defmodule PlausibleWeb.StatsController do
       csvs = %{
         ~c"visitors.csv" => fn -> main_graph_csv(site, query, conn.assigns[:current_user]) end,
         ~c"sources.csv" => fn -> Api.StatsController.sources(conn, params) end,
+        ~c"channels.csv" => fn -> Api.StatsController.channels(conn, params) end,
         ~c"utm_mediums.csv" => fn -> Api.StatsController.utm_mediums(conn, params) end,
         ~c"utm_sources.csv" => fn -> Api.StatsController.utm_sources(conn, params) end,
         ~c"utm_campaigns.csv" => fn -> Api.StatsController.utm_campaigns(conn, params) end,
@@ -143,15 +149,6 @@ defmodule PlausibleWeb.StatsController do
         ~c"referrers.csv" => fn -> Api.StatsController.referrers(conn, params) end,
         ~c"custom_props.csv" => fn -> Api.StatsController.all_custom_prop_values(conn, params) end
       }
-
-      # credo:disable-for-lines:7
-      csvs =
-        if FunWithFlags.enabled?(:channels, for: site) ||
-             FunWithFlags.enabled?(:channels, for: conn.assigns[:current_user]) do
-          Map.put(csvs, ~c"channels.csv", fn -> Api.StatsController.channels(conn, params) end)
-        else
-          csvs
-        end
 
       csv_values =
         Map.values(csvs)
@@ -193,11 +190,11 @@ defmodule PlausibleWeb.StatsController do
   defp csv_graph_metrics(query, site, current_user) do
     include_scroll_depth? =
       !query.include_imported &&
-        PlausibleWeb.Api.StatsController.scroll_depth_enabled?(site, current_user) &&
-        Filters.filtering_on_dimension?(query, "event:page")
+        Filters.filtering_on_dimension?(query, "event:page", behavioral_filters: :ignore) &&
+        Plausible.Stats.ScrollDepth.feature_visible?(site, current_user)
 
     {metrics, column_headers} =
-      if Filters.filtering_on_dimension?(query, "event:goal") do
+      if Filters.filtering_on_dimension?(query, "event:goal", max_depth: 0) do
         {
           [:visitors, :events, :conversion_rate],
           [:date, :unique_conversions, :total_conversions, :conversion_rate]
@@ -341,8 +338,12 @@ defmodule PlausibleWeb.StatsController do
   defp render_shared_link(conn, shared_link) do
     cond do
       !shared_link.site.locked ->
+        current_user = conn.assigns[:current_user]
         shared_link = Plausible.Repo.preload(shared_link, site: :owner)
         stats_start_date = Plausible.Sites.stats_start_date(shared_link.site)
+
+        scroll_depth_visible? =
+          Plausible.Stats.ScrollDepth.check_feature_visible!(shared_link.site, current_user)
 
         conn
         |> put_resp_header("x-robots-tag", "noindex, nofollow")
@@ -353,6 +354,7 @@ defmodule PlausibleWeb.StatsController do
           revenue_goals: list_revenue_goals(shared_link.site),
           funnels: list_funnels(shared_link.site),
           has_props: Plausible.Props.configured?(shared_link.site),
+          scroll_depth_visible: scroll_depth_visible?,
           stats_start_date: stats_start_date,
           native_stats_start_date: NaiveDateTime.to_date(shared_link.site.native_stats_start_at),
           title: title(conn, shared_link.site),
@@ -362,7 +364,7 @@ defmodule PlausibleWeb.StatsController do
           embedded: conn.params["embed"] == "true",
           background: conn.params["background"],
           theme: conn.params["theme"],
-          flags: get_flags(conn.assigns[:current_user], shared_link.site),
+          flags: get_flags(current_user, shared_link.site),
           is_dbip: is_dbip(),
           load_dashboard_js: true
         )
@@ -382,7 +384,7 @@ defmodule PlausibleWeb.StatsController do
 
   defp get_flags(user, site),
     do:
-      [:channels, :saved_segments, :scroll_depth]
+      [:saved_segments, :scroll_depth]
       |> Enum.map(fn flag ->
         {flag, FunWithFlags.enabled?(flag, for: user) || FunWithFlags.enabled?(flag, for: site)}
       end)

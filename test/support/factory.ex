@@ -94,7 +94,7 @@ defmodule Plausible.Factory do
     %Plausible.Imported.SiteImport{
       site: build(:site),
       imported_by: build(:user),
-      start_date: Date.add(today, -200),
+      start_date: ~D[2005-01-01],
       end_date: today,
       source: :universal_analytics,
       status: :completed,
@@ -124,8 +124,8 @@ defmodule Plausible.Factory do
     Map.put(event_factory(attrs), :name, "pageview")
   end
 
-  def pageleave_factory(attrs) do
-    Map.put(event_factory(attrs), :name, "pageleave")
+  def engagement_factory(attrs) do
+    Map.put(event_factory(attrs), :name, "engagement")
   end
 
   def event_factory(attrs) do

@@ -47,6 +47,15 @@ defmodule Plausible.TestUtils do
     {:ok, team: team}
   end
 
+  def setup_team(%{team: team}) do
+    team =
+      team
+      |> Plausible.Teams.Team.setup_changeset()
+      |> Repo.update!()
+
+    {:ok, team: team}
+  end
+
   def create_legacy_site_import(%{site: site}) do
     create_site_import(%{site: site, create_legacy_import?: true})
   end
@@ -62,6 +71,11 @@ defmodule Plausible.TestUtils do
       )
 
     {:ok, site_import: site_import}
+  end
+
+  def set_scroll_depth_visible_at(%{site: site}) do
+    Plausible.Sites.set_scroll_depth_visible_at(site)
+    :ok
   end
 
   def create_api_key(%{user: user}) do

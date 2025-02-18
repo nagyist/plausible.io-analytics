@@ -756,7 +756,9 @@ if config_env() in [:prod, :ce] do
       {Oban.Plugins.Pruner, max_age: thirty_days_in_seconds},
       {Oban.Plugins.Cron, crontab: if(cron_enabled, do: crontab, else: [])},
       # Rescue orphaned jobs after 2 hours
-      {Oban.Plugins.Lifeline, rescue_after: :timer.minutes(120)}
+      {Oban.Plugins.Lifeline, rescue_after: :timer.minutes(120)},
+      # Daily at 1am
+      {Oban.Plugins.Reindexer, schedule: "0 1 * * *"}
     ],
     queues: if(cron_enabled, do: queues, else: []),
     peer: if(cron_enabled, do: Oban.Peers.Postgres, else: false)
@@ -969,5 +971,7 @@ unless s3_disabled? do
     exports_bucket: s3_env_value.("S3_EXPORTS_BUCKET"),
     imports_bucket: s3_env_value.("S3_IMPORTS_BUCKET")
 end
+
+config :plausible, Plausible.Cache.Adapter, sessions: [partitions: 4]
 
 config :phoenix_storybook, enabled: env !== "prod"
