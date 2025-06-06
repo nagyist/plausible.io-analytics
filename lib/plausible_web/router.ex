@@ -109,7 +109,8 @@ defmodule PlausibleWeb.Router do
   end
 
   on_ee do
-    scope alias: PlausibleWeb.Live, assigns: %{connect_live_socket: true} do
+    scope alias: PlausibleWeb.Live,
+          assigns: %{connect_live_socket: true, skip_plausible_tracking: true} do
       pipe_through [:browser, :csrf, :app_layout, :flags]
 
       live "/cs", CustomerSupport, :index, as: :customer_support
@@ -158,6 +159,36 @@ defmodule PlausibleWeb.Router do
         get("/api-basic", TestController, :api_basic)
         get("/:domain/api-with-domain", TestController, :api_basic)
       end
+    end
+  end
+
+  # SSO routes
+  on_ee do
+    pipeline :sso_saml do
+      plug :accepts, ["html"]
+
+      plug PlausibleWeb.Plugs.SecureSSO
+
+      plug PlausibleWeb.Plugs.NoRobots
+
+      plug :fetch_session
+      plug :fetch_live_flash
+      plug :protect_from_forgery, with: :clear_session
+    end
+
+    scope "/sso", PlausibleWeb do
+      pipe_through [PlausibleWeb.Plugs.GateSSO, :browser, :csrf]
+
+      get "/login", SSOController, :login_form
+      post "/login", SSOController, :login
+    end
+
+    scope "/sso/saml", PlausibleWeb do
+      pipe_through [PlausibleWeb.Plugs.GateSSO, :sso_saml]
+
+      get "/signin/:integration_id", SSOController, :saml_signin
+      post "/consume/:integration_id", SSOController, :saml_consume
+      post "/csp-report", SSOController, :csp_report
     end
   end
 
