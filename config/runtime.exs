@@ -304,6 +304,14 @@ secure_cookie =
 
 license_key = get_var_from_path_or_env(config_dir, "LICENSE_KEY", "")
 
+sso_enabled = get_bool_from_path_or_env(config_dir, "SSO_ENABLED", false)
+
+sso_saml_adapter =
+  case get_var_from_path_or_env(config_dir, "SSO_SAML_ADAPTER", "fake") do
+    "fake" -> PlausibleWeb.SSO.FakeSAMLAdapter
+    "real" -> PlausibleWeb.SSO.RealSAMLAdapter
+  end
+
 config :plausible,
   environment: env,
   mailer_email: mailer_email,
@@ -313,7 +321,9 @@ config :plausible,
   log_failed_login_attempts: log_failed_login_attempts,
   license_key: license_key,
   data_dir: data_dir,
-  session_transfer_dir: session_transfer_dir
+  session_transfer_dir: session_transfer_dir,
+  sso_enabled: sso_enabled,
+  sso_saml_adapter: sso_saml_adapter
 
 config :plausible, :selfhost,
   enable_email_verification: enable_email_verification,
@@ -837,41 +847,6 @@ config :ref_inspector,
 
 config :ua_inspector,
   init: {Plausible.Release, :configure_ua_inspector}
-
-if config_env() in [:dev, :staging, :prod, :test] do
-  config :kaffy,
-    otp_app: :plausible,
-    ecto_repo: Plausible.Repo,
-    router: PlausibleWeb.Router,
-    admin_title: "Plausible Admin",
-    extensions: [Plausible.CrmExtensions],
-    resources: [
-      auth: [
-        resources: [
-          user: [schema: Plausible.Auth.User, admin: Plausible.Auth.UserAdmin],
-          api_key: [schema: Plausible.Auth.ApiKey, admin: Plausible.Auth.ApiKeyAdmin]
-        ]
-      ],
-      teams: [
-        resources: [
-          team: [schema: Plausible.Teams.Team, admin: Plausible.Teams.TeamAdmin]
-        ]
-      ],
-      sites: [
-        resources: [
-          site: [schema: Plausible.Site, admin: Plausible.SiteAdmin]
-        ]
-      ],
-      billing: [
-        resources: [
-          enterprise_plan: [
-            schema: Plausible.Billing.EnterprisePlan,
-            admin: Plausible.Billing.EnterprisePlanAdmin
-          ]
-        ]
-      ]
-    ]
-end
 
 geo_opts =
   cond do

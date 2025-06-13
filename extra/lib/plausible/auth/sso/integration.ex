@@ -16,6 +16,7 @@ defmodule Plausible.Auth.SSO.Integration do
   import PolymorphicEmbed
 
   alias Plausible.Auth.SSO
+  alias Plausible.Teams
 
   @type t() :: %__MODULE__{}
 
@@ -31,10 +32,17 @@ defmodule Plausible.Auth.SSO.Integration do
 
     belongs_to :team, Plausible.Teams.Team
     has_many :users, Plausible.Auth.User, foreign_key: :sso_integration_id
+    has_many :sso_domains, SSO.Domain, foreign_key: :sso_integration_id
 
     timestamps()
   end
 
+  @spec configured?(t()) :: boolean()
+  def configured?(%__MODULE__{config: %config_mod{} = config}) do
+    config_mod.configured?(config)
+  end
+
+  @spec init_changeset(Teams.Team.t()) :: Ecto.Changeset.t()
   def init_changeset(team) do
     params = %{config: %{__type__: :saml}}
 
@@ -45,6 +53,7 @@ defmodule Plausible.Auth.SSO.Integration do
     |> put_assoc(:team, team)
   end
 
+  @spec update_changeset(t(), map()) :: Ecto.Changeset.t()
   def update_changeset(integration, config_params) do
     params = tag_params(:saml, config_params)
 
