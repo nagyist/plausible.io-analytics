@@ -2,7 +2,8 @@ import { test, Page } from '@playwright/test'
 import { LOCAL_SERVER_ADDR } from './support/server'
 import {
   expectPlausibleInAction,
-  ignoreEngagementRequests
+  isEngagementEvent,
+  isPageviewEvent
 } from './support/test-utils'
 import { initializePageDynamically } from './support/initialize-page-dynamically'
 import { ScriptConfig } from './support/types'
@@ -33,24 +34,20 @@ test('does not track form submissions when the feature is disabled', async ({
       await page.goto(url)
       await page.click('input[type="submit"]')
     },
-    shouldIgnoreRequest: ignoreEngagementRequests,
+    shouldIgnoreRequest: isEngagementEvent,
     expectedRequests: [{ n: 'pageview' }],
     refutedRequests: [
       {
-        n: 'Form Submission'
+        n: 'Form: Submission'
       }
     ]
   })
 })
 
 test.describe('form submissions feature is enabled', () => {
-  test('tracks forms that use GET method', async ({ page, browserName }, {
+  test('tracks forms that use GET method', async ({ page }, {
     testId
   }) => {
-    test.skip(
-      browserName === 'firefox',
-      'flaky on Firefox versions less than v133 due to missing fetch keepalive implementation'
-    )
     const { url } = await initializePageDynamically(page, {
       testId,
       scriptConfig: { ...DEFAULT_CONFIG, formSubmissions: true },
@@ -70,10 +67,10 @@ test.describe('form submissions feature is enabled', () => {
         await page.fill('input[type="text"]', 'Any Name')
         await page.click('input[type="submit"]')
       },
-      shouldIgnoreRequest: pageviewOrEngagementEvent,
+      shouldIgnoreRequest: [isPageviewEvent, isEngagementEvent],
       expectedRequests: [
         {
-          n: 'Form Submission',
+          n: 'Form: Submission',
           p: { path: url }
         }
       ]
@@ -101,10 +98,10 @@ test.describe('form submissions feature is enabled', () => {
         await ensurePlausibleInitialized(page)
         await page.click('input[type="submit"]')
       },
-      shouldIgnoreRequest: pageviewOrEngagementEvent,
+      shouldIgnoreRequest: [isPageviewEvent, isEngagementEvent],
       expectedRequests: [
         {
-          n: 'Form Submission',
+          n: 'Form: Submission',
           p: { path: url }
         }
       ]
@@ -140,10 +137,10 @@ test.describe('form submissions feature is enabled', () => {
         await page.click('button#dynamically-insert-form')
         await page.click('input[type="submit"]')
       },
-      shouldIgnoreRequest: pageviewOrEngagementEvent,
+      shouldIgnoreRequest: [isPageviewEvent, isEngagementEvent],
       expectedRequests: [
         {
-          n: 'Form Submission',
+          n: 'Form: Submission',
           p: { path: url }
         }
       ]
@@ -174,10 +171,10 @@ test.describe('form submissions feature is enabled', () => {
         await page.fill('input[type="email"]', 'invalid email')
         await page.click('input[type="submit"]')
       },
-      shouldIgnoreRequest: pageviewOrEngagementEvent,
+      shouldIgnoreRequest: [isPageviewEvent, isEngagementEvent],
       expectedRequests: [
         {
-          n: 'Form Submission',
+          n: 'Form: Submission',
           p: { path: url }
         }
       ]
@@ -207,11 +204,11 @@ test.describe('form submissions feature is enabled', () => {
         await page.fill('input[type="email"]', 'invalid email')
         await page.click('input[type="submit"]')
       },
-      shouldIgnoreRequest: ignoreEngagementRequests,
+      shouldIgnoreRequest: isEngagementEvent,
       expectedRequests: [{ n: 'pageview' }],
       refutedRequests: [
         {
-          n: 'Form Submission'
+          n: 'Form: Submission'
         }
       ]
     })
@@ -240,11 +237,11 @@ test.describe('form submissions feature is enabled', () => {
 
         await page.click('button#trigger-FormElement-submit')
       },
-      shouldIgnoreRequest: ignoreEngagementRequests,
+      shouldIgnoreRequest: isEngagementEvent,
       expectedRequests: [{ n: 'pageview' }],
       refutedRequests: [
         {
-          n: 'Form Submission'
+          n: 'Form: Submission'
         }
       ]
     })
@@ -276,10 +273,10 @@ test.describe('form submissions feature is enabled', () => {
         await ensurePlausibleInitialized(page)
         await page.click('input[type="submit"]')
       },
-      shouldIgnoreRequest: pageviewOrEngagementEvent,
+      shouldIgnoreRequest: [isPageviewEvent, isEngagementEvent],
       expectedRequests: [
         {
-          n: 'Form Submission',
+          n: 'Form: Submission',
           p: { path: url }
         }
       ]
@@ -290,10 +287,10 @@ test.describe('form submissions feature is enabled', () => {
         await page.fill('input[type="email"]', 'customer@example.com')
         await page.keyboard.press('Enter')
       },
-      shouldIgnoreRequest: pageviewOrEngagementEvent,
+      shouldIgnoreRequest: [isPageviewEvent, isEngagementEvent],
       expectedRequests: [
         {
-          n: 'Form Submission',
+          n: 'Form: Submission',
           p: { path: url }
         }
       ]
@@ -308,9 +305,6 @@ test.describe('form submissions feature is enabled', () => {
 function ensurePlausibleInitialized(page: Page) {
   return page.waitForFunction(() => (window as any).plausible?.l === true)
 }
-
-const pageviewOrEngagementEvent = ({ n }) =>
-  ['pageview', 'engagement'].includes(n)
 
 /**
  * This is a stub for custom form onsubmit handlers Plausible users may have on their websites.
