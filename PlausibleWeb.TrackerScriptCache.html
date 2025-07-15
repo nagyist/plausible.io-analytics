@@ -8,13 +8,13 @@
     <meta name="project" content="Plausible v0.0.1">
 
 
-    <title>Plausible.SiteAdmin — Plausible v0.0.1</title>
+    <title>PlausibleWeb.TrackerScriptCache — Plausible v0.0.1</title>
     <link rel="stylesheet" href="dist/html-elixir-P45HOAC7.css" />
 
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-K7URE6B4.js"></script>
-    <script src="dist/sidebar_items-00F1B402.js"></script>
+    <script src="dist/sidebar_items-01DF2B65.js"></script>
     <script src="docs_config.js"></script>
     <script async src="dist/html-PVRIOB7F.js"></script>
 
@@ -126,16 +126,20 @@ Pages
 <div id="top-content">
   <h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/tracker_script_cache.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
 
-    <span translate="no">Plausible.SiteAdmin</span> 
+    <span translate="no">PlausibleWeb.TrackerScriptCache</span> 
     <small class="app-vsn" translate="no">(Plausible v0.0.1)</small>
 
   </h1>
 
+
+    <section id="moduledoc">
+<p>Cache for tracker script(s) for self-hosted Plausible instances.</p>
+    </section>
 
 </div>
 
@@ -153,7 +157,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#before_update/2" data-no-tooltip translate="no">before_update(conn, changeset)</a>
+        <a href="#child_spec/1" data-no-tooltip translate="no">child_spec(opts)</a>
 
       </div>
 
@@ -161,7 +165,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#create_changeset/2" data-no-tooltip translate="no">create_changeset(schema, attrs)</a>
+        <a href="#get/2" data-no-tooltip translate="no">get(key, opts \\ [])</a>
 
       </div>
 
@@ -169,7 +173,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#custom_index_query/3" data-no-tooltip translate="no">custom_index_query(conn, schema, query)</a>
+        <a href="#get_or_store/3" data-no-tooltip translate="no">get_or_store(key, fallback_fn, opts \\ [])</a>
 
       </div>
 
@@ -177,7 +181,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#form_fields/1" data-no-tooltip translate="no">form_fields(_)</a>
+        <a href="#merge_items/2" data-no-tooltip translate="no">merge_items(new_items, opts \\ [])</a>
 
       </div>
 
@@ -185,7 +189,19 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#get_struct_fields/1" data-no-tooltip translate="no">get_struct_fields(module)</a>
+        <a href="#ready?/1" data-no-tooltip translate="no">ready?(cache_name \\ name())</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Ensures the cache has non-zero size unless no items exist.
+Useful for orchestrating app startup to prevent the service
+going up asynchronously with an empty cache.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#refresh_all/1" data-no-tooltip translate="no">refresh_all(opts \\ [])</a>
 
       </div>
 
@@ -193,7 +209,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#html_escape/1" data-no-tooltip translate="no">html_escape(string)</a>
+        <a href="#refresh_updated_recently/1" data-no-tooltip translate="no">refresh_updated_recently(opts \\ [])</a>
 
       </div>
 
@@ -201,39 +217,27 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#index/1" data-no-tooltip translate="no">index(_)</a>
+        <a href="#repo/0" data-no-tooltip translate="no">repo()</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Callback implementation for <a href="Plausible.Cache.html#c:repo/0"><code class="inline">Plausible.Cache.repo/0</code></a>.</p></div>
 
     </div>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#list_actions/1" data-no-tooltip translate="no">list_actions(conn)</a>
+        <a href="#size/1" data-no-tooltip translate="no">size(cache_name \\ name())</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>See <a href="Plausible.Cache.Adapter.html#size/1"><code class="inline">Plausible.Cache.Adapter.size/1</code></a>.</p></div>
 
     </div>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#ordering/1" data-no-tooltip translate="no">ordering(schema)</a>
-
-      </div>
-
-    </div>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#search_fields/1" data-no-tooltip translate="no">search_fields(schema)</a>
-
-      </div>
-
-    </div>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#update_changeset/2" data-no-tooltip translate="no">update_changeset(schema, attrs)</a>
+        <a href="#telemetry_event_refresh/2" data-no-tooltip translate="no">telemetry_event_refresh(cache_name \\ name(), mode)</a>
 
       </div>
 
@@ -252,15 +256,15 @@ Pages
       <span class="text">Functions</span>
     </h1>
     <div class="functions-list">
-<section class="detail" id="before_update/2">
+<section class="detail" id="child_spec/1">
 
   <div class="detail-header">
-    <a href="#before_update/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#child_spec/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">before_update(conn, changeset)</h1>
+    <h1 class="signature" translate="no">child_spec(opts)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L50" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/tracker_script_cache.ex#L8" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -268,19 +272,27 @@ Pages
   </div>
 
   <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> child_spec(<a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="https://hexdocs.pm/elixir/Supervisor.html#t:child_spec/0">Supervisor.child_spec</a>()</pre>
+
+      </div>
 
 
   </section>
 </section>
-<section class="detail" id="create_changeset/2">
+<section class="detail" id="get/2">
+
+    <span id="get/1"></span>
 
   <div class="detail-header">
-    <a href="#create_changeset/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#get/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">create_changeset(schema, attrs)</h1>
+    <h1 class="signature" translate="no">get(key, opts \\ [])</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L265" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/tracker_script_cache.ex#L8" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -288,19 +300,27 @@ Pages
   </div>
 
   <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>() | nil</pre>
+
+      </div>
 
 
   </section>
 </section>
-<section class="detail" id="custom_index_query/3">
+<section class="detail" id="get_or_store/3">
+
+    <span id="get_or_store/2"></span>
 
   <div class="detail-header">
-    <a href="#custom_index_query/3" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#get_or_store/3" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">custom_index_query(conn, schema, query)</h1>
+    <h1 class="signature" translate="no">get_or_store(key, fallback_fn, opts \\ [])</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L18" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/tracker_script_cache.ex#L8" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -308,19 +328,27 @@ Pages
   </div>
 
   <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get_or_store(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), (-&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()), <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>() | nil</pre>
+
+      </div>
 
 
   </section>
 </section>
-<section class="detail" id="form_fields/1">
+<section class="detail" id="merge_items/2">
+
+    <span id="merge_items/1"></span>
 
   <div class="detail-header">
-    <a href="#form_fields/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#merge_items/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">form_fields(_)</h1>
+    <h1 class="signature" translate="no">merge_items(new_items, opts \\ [])</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L58" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/tracker_script_cache.ex#L8" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -328,19 +356,27 @@ Pages
   </div>
 
   <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> merge_items(new_items :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()], opts :: <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: :ok</pre>
+
+      </div>
 
 
   </section>
 </section>
-<section class="detail" id="get_struct_fields/1">
+<section class="detail" id="ready?/1">
+
+    <span id="ready?/0"></span>
 
   <div class="detail-header">
-    <a href="#get_struct_fields/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#ready?/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">get_struct_fields(module)</h1>
+    <h1 class="signature" translate="no">ready?(cache_name \\ name())</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L257" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/tracker_script_cache.ex#L8" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -348,19 +384,57 @@ Pages
   </div>
 
   <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> ready?(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Ensures the cache has non-zero size unless no items exist.
+Useful for orchestrating app startup to prevent the service
+going up asynchronously with an empty cache.</p>
+  </section>
+</section>
+<section class="detail" id="refresh_all/1">
+
+    <span id="refresh_all/0"></span>
+
+  <div class="detail-header">
+    <a href="#refresh_all/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">refresh_all(opts \\ [])</h1>
+
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/tracker_script_cache.ex#L8" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> refresh_all(<a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: :ok</pre>
+
+      </div>
 
 
   </section>
 </section>
-<section class="detail" id="html_escape/1">
+<section class="detail" id="refresh_updated_recently/1">
+
+    <span id="refresh_updated_recently/0"></span>
 
   <div class="detail-header">
-    <a href="#html_escape/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#refresh_updated_recently/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">html_escape(string)</h1>
+    <h1 class="signature" translate="no">refresh_updated_recently(opts \\ [])</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L268" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/tracker_script_cache.ex#L8" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -368,19 +442,25 @@ Pages
   </div>
 
   <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> refresh_updated_recently(<a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>()) :: :ok</pre>
+
+      </div>
 
 
   </section>
 </section>
-<section class="detail" id="index/1">
+<section class="detail" id="repo/0">
 
   <div class="detail-header">
-    <a href="#index/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#repo/0" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">index(_)</h1>
+    <h1 class="signature" translate="no">repo()</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L79" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/tracker_script_cache.ex#L8" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -389,18 +469,20 @@ Pages
 
   <section class="docstring">
 
-
+<p>Callback implementation for <a href="Plausible.Cache.html#c:repo/0"><code class="inline">Plausible.Cache.repo/0</code></a>.</p>
   </section>
 </section>
-<section class="detail" id="list_actions/1">
+<section class="detail" id="size/1">
+
+    <span id="size/0"></span>
 
   <div class="detail-header">
-    <a href="#list_actions/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#size/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">list_actions(conn)</h1>
+    <h1 class="signature" translate="no">size(cache_name \\ name())</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L109" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/tracker_script_cache.ex#L8" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -409,18 +491,20 @@ Pages
 
   <section class="docstring">
 
-
+<p>See <a href="Plausible.Cache.Adapter.html#size/1"><code class="inline">Plausible.Cache.Adapter.size/1</code></a>.</p>
   </section>
 </section>
-<section class="detail" id="ordering/1">
+<section class="detail" id="telemetry_event_refresh/2">
+
+    <span id="telemetry_event_refresh/1"></span>
 
   <div class="detail-header">
-    <a href="#ordering/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#telemetry_event_refresh/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">ordering(schema)</h1>
+    <h1 class="signature" translate="no">telemetry_event_refresh(cache_name \\ name(), mode)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L8" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/tracker_script_cache.ex#L8" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -429,45 +513,11 @@ Pages
 
   <section class="docstring">
 
+      <div class="specs">
 
-  </section>
-</section>
-<section class="detail" id="search_fields/1">
+          <pre translate="no"><span class="attribute">@spec</span> telemetry_event_refresh(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]</pre>
 
-  <div class="detail-header">
-    <a href="#search_fields/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
-      <i class="ri-link-m" aria-hidden="true"></i>
-    </a>
-    <h1 class="signature" translate="no">search_fields(schema)</h1>
-
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L12" class="icon-action" rel="help" aria-label="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="update_changeset/2">
-
-  <div class="detail-header">
-    <a href="#update_changeset/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
-      <i class="ri-link-m" aria-hidden="true"></i>
-    </a>
-    <h1 class="signature" translate="no">update_changeset(schema, attrs)</h1>
-
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/site/admin.ex#L266" class="icon-action" rel="help" aria-label="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
+      </div>
 
 
   </section>
